@@ -21,4 +21,8 @@ public class BookService {
 
        return bookList;
     }
+
+    public Book getBookByName (String name){
+        return bookRepository.findByBookName(name);
+    }
 }
