@@ -1,4 +1,4 @@
-package api.model;
+package com.example.api.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -7,16 +7,16 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import api.model.User;
-import repo.UserRepository;
-import service.UserService;
+import com.example.api.model.User;
+import com.example.repo.UserRepository;
+import com.example.service.UserService;
 
 @Transactional
 public class UserServiceTest {
 
     @Autowired
     UserRepository repo;
-
+    @Autowired
     UserService service;
    
 
@@ -24,19 +24,20 @@ public class UserServiceTest {
     public void setUp() {
 
         repo = mock(UserRepository.class);
-        service = new UserService(repo);
-    }
+        service = new UserService();
 
+    }
+    User sampleUser = new User();
     @Test
     public void getUser(){
-        User sampleUser = new User();
+
         sampleUser.setId(1);
-        sampleUser.setName("Ritchy");
+        sampleUser.setFirstname("Ritchy");
 
 
         when(repo.findById(1)).thenReturn(sampleUser);
         User user = service.getUser(1);
-        assertEquals("Ritchy", user.getName());
+        assertEquals("Ritchy", user.getFirstname());
     }
 
     

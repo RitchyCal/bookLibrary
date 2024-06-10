@@ -1,9 +1,10 @@
-package service;
+package com.example.service;
 
+import com.example.api.model.BookList;
 import org.springframework.stereotype.Service;
 
-import repo.BookListRepository;
-import api.model.Book;
+import com.example.repo.BookListRepository;
+import com.example.api.model.Book;
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ public class BookListService {
     }
 
     public List<Book> getUserBooklist(int id){
-            bookListRepository.findAllByUserId(id);
+        List<BookList> books =  bookListRepository.findAllByUserId(id);
+        return List.of();
     }
 }

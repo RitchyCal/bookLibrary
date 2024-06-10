@@ -1,19 +1,17 @@
-package service;
+package com.example.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.model.User;
-import repo.UserRepository;
+import com.example.api.model.User;
+import com.example.repo.UserRepository;
 
 @Service
 public class UserService {
     // will be a db call to get user
-   
-    private final UserRepository userRepository;
+   @Autowired
+    UserRepository userRepository;
 
-    public UserService(UserRepository userRepository){
-        this.userRepository = userRepository;
-    }
     public User getUser(int id) {
         return userRepository.findById(id);
     }

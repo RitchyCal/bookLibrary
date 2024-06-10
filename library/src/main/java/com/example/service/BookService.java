@@ -1,12 +1,9 @@
-package service;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.example.service;
 
 import org.springframework.stereotype.Service;
-import api.model.Book;
+import com.example.api.model.Book;
 
-import repo.BookRepository;
+import com.example.repo.BookRepository;
 
 @Service
 public class BookService {
@@ -14,12 +11,6 @@ public class BookService {
 
     public BookService(BookRepository bookRepository){
         this.bookRepository = bookRepository;
-    }
-
-    public List<Book> getBooksByGenre(String genre){
-       List<Book> bookList = new ArrayList<>();
-
-       return bookList;
     }
 
     public Book getBookByName (String name){

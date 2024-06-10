@@ -1,12 +1,10 @@
-package repo;
+package com.example.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import api.model.User;
-import java.util.List;
+import com.example.api.model.User;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findById(int id);
-
-    List<User> findByName(String name);
 }
