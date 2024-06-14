@@ -12,8 +12,8 @@ public class UserService {
    @Autowired
     UserRepository userRepository;
 
-    public User getUser(int id) {
-        return userRepository.findById(id);
+    public User getUser(long id) {
+        return userRepository.findByUserId(id);
     }
     public void createUser(User entity) {
         userRepository.save(entity);

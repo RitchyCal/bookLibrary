@@ -1,4 +1,4 @@
-package com.example.api.model;
+package com.example.api.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -9,6 +9,8 @@ public class UserModel {
     private String firstname;
     @JsonProperty("lastname")
     private String lastname;
+    @JsonProperty("username")
+    private String username;
     @JsonProperty("password")
     private String password;
 }

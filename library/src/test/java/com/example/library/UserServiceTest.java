@@ -31,11 +31,11 @@ public class UserServiceTest {
     @Test
     public void getUser(){
 
-        sampleUser.setId(1);
+        sampleUser.setUser_id(1);
         sampleUser.setFirstname("Ritchy");
 
 
-        when(repo.findById(1)).thenReturn(sampleUser);
+        when(repo.findByUserId(1)).thenReturn(sampleUser);
         User user = service.getUser(1);
         assertEquals("Ritchy", user.getFirstname());
     }
