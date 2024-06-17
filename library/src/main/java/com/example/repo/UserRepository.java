@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-   @Query(value ="select * from users u where u.user_id = :id", nativeQuery = true )
-   User findByUserId(@Param("id") long id);
+   @Query(value = "select u from users where u.user_id = :user_id ",nativeQuery = true )
+   Optional<User> findByUserid(@Param("user_id") long user_id);
 }

@@ -13,6 +13,6 @@ public class BookList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int userId;
-    private String bookName;
+    private String bookname;
     private int bookId;
 }

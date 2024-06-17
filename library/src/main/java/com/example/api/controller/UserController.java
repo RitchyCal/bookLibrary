@@ -1,7 +1,8 @@
 package com.example.api.controller;
 
 import com.example.api.model.request.UserModel;
-import com.example.api.model.response.UserResponse;
+import com.example.api.model.response.UserDTO;
+import com.example.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,27 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.api.model.User;
 import com.example.service.UserService;
-
-import java.util.Optional;
+import org.springframework.web.client.HttpClientErrorException;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("api/v1/user")
 public class UserController {
     @Autowired
     UserService userService;
 
     @GetMapping("/{userId}")
     @ResponseBody
-    public ResponseEntity<UserResponse> getUser(@PathVariable long userId){
-        UserResponse response = new UserResponse();
-        try {
-            User user = userService.getUser(userId);
-            response.setId(user.getUser_id());
-            response.setUsername(user.getUsername());
-        } catch (Exception error){
-            System.out.println(error.toString());
-        }
+    public ResponseEntity<UserDTO> getUser(@PathVariable long userId) throws UserNotFoundException {
+        UserDTO response = userService.getUser(userId);
 
         return new ResponseEntity<>(response, HttpStatus.OK) ;
     }
