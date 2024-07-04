@@ -30,7 +30,7 @@ public class BookController {
 
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/genre/{genre}")
     public ResponseEntity<List<BookDTO>> getBooksByGenre(@PathVariable String genre) throws BookNotFoundException {
 
         List<BookDTO> response = bookService.getBooksByGenre(genre);
