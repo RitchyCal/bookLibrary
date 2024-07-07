@@ -6,6 +6,7 @@ import com.example.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -30,12 +31,7 @@ public class UserController {
 
     @PostMapping("/create-user")
     public ResponseEntity<?> createUser(@RequestBody UserModel entity) {
-        User user = new User();
-        user.setFirstname(entity.getFirstname());
-        user.setLastname(entity.getLastname());
-        user.setPassword(entity.getPassword());
-        user.setUsername(entity.getUsername());
-        userService.createUser(user);
+        userService.createUser(entity);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
