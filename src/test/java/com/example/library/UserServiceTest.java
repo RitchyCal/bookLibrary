@@ -1,6 +1,5 @@
 package com.example.library;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import com.example.api.model.response.UserDTO;
@@ -14,7 +13,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import com.example.api.model.User;
 import com.example.repo.UserRepository;
@@ -27,6 +27,8 @@ public class UserServiceTest {
 
     @Mock
     UserRepository repo;
+    @Mock
+    PasswordEncoder passwordEncoder;
     @Autowired
     UserService service;
     @Autowired
@@ -37,7 +39,7 @@ public class UserServiceTest {
 
     @Before
     public void setUp() {
-        service = new UserService(repo, mapper);
+        service = new UserService(repo, mapper, passwordEncoder);
 
     }
     User sampleUser = new User();

@@ -6,13 +6,10 @@ import com.example.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.example.api.model.User;
 import com.example.service.UserService;
-import org.springframework.web.client.HttpClientErrorException;
 
 
 @RestController
@@ -23,7 +20,7 @@ public class UserController {
 
     @GetMapping("/{userId}")
     @ResponseBody
-    public ResponseEntity<UserDTO> getUser(@PathVariable long userId) throws UserNotFoundException {
+    public ResponseEntity<UserDTO> getUser(@PathVariable Long userId) throws UserNotFoundException {
         UserDTO response = userService.getUser(userId);
 
         return new ResponseEntity<>(response, HttpStatus.OK) ;
@@ -33,6 +30,18 @@ public class UserController {
     public ResponseEntity<?> createUser(@RequestBody UserModel entity) {
         userService.createUser(entity);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody UserModel entity){
+        userService.updateUser(userId, entity);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId){
+           userService.deleteUser(userId);
+           return  new ResponseEntity<>(HttpStatus.OK);
     }
     
 }

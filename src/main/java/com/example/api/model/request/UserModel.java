@@ -13,4 +13,6 @@ public class UserModel {
     private String username;
     @JsonProperty("password")
     private String password;
+    @JsonProperty("email")
+    private String email;
 }
